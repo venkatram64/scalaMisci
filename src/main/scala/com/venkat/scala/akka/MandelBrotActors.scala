@@ -23,18 +23,20 @@ object MandelBrotActors extends JFXApp{
   val YMax = 1.0
 
   case class Complex(val real : Double, val imag : Double) {
+
     def +(other : Complex) = new Complex(real + other.real, imag + other.imag)
 
     def *(other : Complex) = new Complex(real*other.real - imag*other.imag,
       imag*other.real + real*other.imag)
 
     def mag : Double = Math.sqrt(real*real + imag*imag)
+
   }
 
   def mandelCount(c: Complex) : Int = {
     var cnt = 0;
     var z = Complex(0,0)
-    while(cnt < MaxCount && z.imag < 4){
+    while(cnt < MaxCount && z.mag < 4){
       z = z* z + c
       cnt += 1
     }

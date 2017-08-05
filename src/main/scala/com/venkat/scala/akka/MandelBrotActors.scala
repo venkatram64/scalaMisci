@@ -49,7 +49,7 @@ object MandelBrotActors extends JFXApp{
     override def receive: Receive = {
       case Line(row, y) =>
         for(j <- 0 until ImageSize){
-          val x = XMin + j * (XMax - XMin)/ImageSize
+          val x = XMin + j * (XMax - XMin)/ImageSize  //real value
           val cnt = mandelCount(Complex(x, y))
           Platform.runLater{
             pw.setColor(j, row, if(cnt == MaxCount) Color.Black else{
@@ -63,6 +63,7 @@ object MandelBrotActors extends JFXApp{
 
   val system = ActorSystem("MandelSystem")
 
+  //stage is nothing but window
   stage = new application.JFXApp.PrimaryStage{
     title = "Actor Mandelbrot"
     scene = new Scene(ImageSize, ImageSize){
@@ -70,7 +71,7 @@ object MandelBrotActors extends JFXApp{
       content = new ImageView(image)
       val router = system.actorOf(BalancingPool(4).props(Props(new LineActor(image.pixelWriter))),"Pool")
       for(i <- 0 until ImageSize){
-        val y = YMin + i * (YMax - YMin)/ImageSize
+        val y = YMin + i * (YMax - YMin)/ImageSize // imaginary value
         router ! Line(i, y)
       }
     }

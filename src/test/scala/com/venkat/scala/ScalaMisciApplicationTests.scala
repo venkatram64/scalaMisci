@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 class ScalaMisciApplicationTests {
 
 	@Test
-	def addRecord(): Unit = {
+	def myTest(): Unit = {
 		println("Hi...")
 	}
 

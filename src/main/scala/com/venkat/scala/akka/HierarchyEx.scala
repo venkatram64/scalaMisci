@@ -12,7 +12,7 @@ case object PrintSignal
 
 class ParentActor extends Actor{
 
-  /*private var number = 0
+  private var number = 0
   private val children = collection.mutable.Buffer[ActorRef]()
 
   override def receive: Receive = {
@@ -21,9 +21,9 @@ class ParentActor extends Actor{
       number += 1
     case SignalChildren =>
       children.foreach( _ ! PrintSignal)
-  }*/
+  }
 
-  private var number = 0
+/*  private var number = 0
 
   override def receive: Receive = {
     case CreateChild =>
@@ -31,7 +31,7 @@ class ParentActor extends Actor{
       number += 1
     case SignalChildren =>
       context.children.foreach( _ ! PrintSignal)
-  }
+  }*/
 }
 
 class ChildActor extends Actor{

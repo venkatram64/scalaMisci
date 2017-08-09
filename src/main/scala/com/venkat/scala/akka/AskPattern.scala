@@ -18,8 +18,11 @@ case class NameResponse(name:String)
 case class AskNameOf(other: ActorRef)
 
 class AskActor(val name: String) extends Actor{
+
   override def receive: Receive = {
+
     case AskName => sender ! NameResponse(name)
+
     case AskNameOf(other) =>
       implicit  val timeout = Timeout( 1 seconds)
       val f = other ? AskName
@@ -40,7 +43,7 @@ object AskPattern extends App{
   val actor2 = system.actorOf(Props(new AskActor("Krishna")), "AskActor2")
 
   implicit  val timeout = Timeout( 1 seconds)
-  val answer = actor ? AskName
+  val answer = actor ? AskName //gives back a future
   answer.foreach(n => println("Name is " + n))
 
   actor ! AskNameOf(actor2)

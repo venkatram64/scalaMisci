@@ -6,9 +6,11 @@ import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 /**
   * Created by venkatram.veerareddy on 8/3/2017.
   */
+
+
 class CountdownActor extends Actor{
   import com.venkat.scala.akka.ActorCountdown._
-
+  //actor communication
   override def receive: Receive = {
     case StartCounting(n, other) =>
       println(n)
@@ -21,10 +23,7 @@ class CountdownActor extends Actor{
       }else{
         context.system.terminate()
       }
-
   }
-
-
 }
 
 object ActorCountdown extends App{
@@ -37,7 +36,6 @@ object ActorCountdown extends App{
   val actor2 = system.actorOf(Props[CountdownActor],"CountdownActor2")
   println("Before message.")
   actor ! StartCounting(10, actor2)
-
 
   system.terminate()
 }

@@ -1,7 +1,7 @@
 package com.venkat.scala.parallel
 
 import scala.concurrent.Future
-import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.ExecutionContext.Implicits.global//this is implicit for Future
 import io.StdIn._
 
 /**

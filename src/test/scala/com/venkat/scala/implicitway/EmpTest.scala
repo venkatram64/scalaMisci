@@ -3,9 +3,12 @@ package com.venkat.scala.implicitway
 import org.scalatest.{Matchers, WordSpec}
 
 
-trait TestEnvironment extends WordSpec with Matchers{
+trait TestEnvironment extends WordSpec
+              with Matchers{
+
   implicit val empRepository: EmployeeRepository = new EmployeeStoreRepository
   val empService: EmployeeService = new EmployeeService
+
 }
 
 class EmpTest extends TestEnvironment{

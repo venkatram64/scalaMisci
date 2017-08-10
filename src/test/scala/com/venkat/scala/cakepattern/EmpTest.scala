@@ -4,10 +4,14 @@ import com.venkat.scala.misc.cakepattern.{EmployeeRepository, EmployeeRepository
 import org.scalatest.{Matchers, WordSpec}
 
 
-trait TestEnvironment extends WordSpec with EmployeeRepositoryController with EmployeeServiceController with Matchers{
+trait TestEnvironment extends WordSpec
+        with EmployeeRepositoryController
+        with EmployeeServiceController
+        with Matchers{
 
   override val employeeRepository: EmployeeRepository = new EmployeeStoreRepositoryController
   override val employeeService: EmployeeService = new EmployeeServiceImpl
+
 }
 
 class EmpTest extends TestEnvironment{

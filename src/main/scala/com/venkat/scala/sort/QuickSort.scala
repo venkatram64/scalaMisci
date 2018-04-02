@@ -5,7 +5,7 @@ class QuickSort {
   def quickSork(lst: List[Double]): List[Double] = lst match {
     case Nil => lst //if list is having nothing
     case h::Nil => lst //if list is having only one element
-    case pivot::t =>
+    case pivot::t => //take the first element as the pivot, remaing is the tatil
       val (less, greater) = t.partition(_ < pivot)
       quickSork(less) ::: (pivot :: quickSork(greater))
   }

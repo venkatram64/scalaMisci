@@ -3,8 +3,8 @@ package com.venkat.scala.sort
 class QuickSort {
   //o(n long n)
   def quickSork(lst: List[Double]): List[Double] = lst match {
-    case Nil => lst
-    case h::Nil => lst
+    case Nil => lst //if list is having nothing
+    case h::Nil => lst //if list is having only one element
     case pivot::t =>
       val (less, greater) = t.partition(_ < pivot)
       quickSork(less) ::: (pivot :: quickSork(greater))

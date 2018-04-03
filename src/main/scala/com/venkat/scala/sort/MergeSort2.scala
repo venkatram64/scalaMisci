@@ -6,7 +6,7 @@ class MergeSort2 {
   def merge(a: List[Int], b: List[Int]) : List[Int] = (a,b) match {
     case (Nil, _) => b
     case (_, Nil) => a
-    case (x::xs, y::ys) =>
+    case (x::xs, y::ys) => //x::xs means x as head, xs as tail, similary y as head and ys tail
       if(x <= y) x :: merge(xs, b)
       else y :: merge(a, ys)
   }

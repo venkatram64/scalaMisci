@@ -12,18 +12,18 @@ object MultiThreading2{
   def main(args:Array[String]): Unit = {
     var count = 0
     val start = System.nanoTime()
-    val threads = for(i <- 1 to 10) yield {
+    val threads = for(i <- 1 to 10) yield {  //10 threads are spawned
       new Thread(new Runnable {
         override def run(): Unit = {
-          for(j <- 1 to 100000000) MultiThreading2.synchronized{
+          for(j <- 1 to 100000000) MultiThreading2.synchronized{//blocking
             count += 1 //race condition
           }
         }
       })
     }
-    threads.foreach(_.start())
-    threads.foreach(_.join())
-    println((System.nanoTime() - start)/1e9)
+    threads.foreach(_.start()) //all threads are started
+    threads.foreach(_.join()) //waited to join all threads
+    println((System.nanoTime() - start)/1e9) // in seconds
     println(count)
   }
 }

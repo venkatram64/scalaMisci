@@ -20,7 +20,6 @@ object MultiThreading7{
     val fibs = for(i <- (30 to 15 by -1).par) yield{
       fib(i)
     }
-
     //fibs.foreach(println)
     fibs.seq.foreach(println)
   }
@@ -29,9 +28,9 @@ object MultiThreading7{
     val es = Executors.newFixedThreadPool(4)
     val futures = for(i <- 30 to 15 by -1) yield {
       es.submit(new Callable[Int] {
-        override def call(): Int = {
+        override def call: Int = {
           val r = fib(i)
-          println("Calc: " + r)
+          println( " Calc: " + r)
           r
         }
       })

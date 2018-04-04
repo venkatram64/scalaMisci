@@ -6,7 +6,7 @@ class QuickSort {
     case Nil => lst //if list is having nothing
     case h::Nil => lst //if list is having only one element
     case pivot::t => //take the first element as the pivot, remaing is the tatil
-      val (less, greater) = t.partition(_ < pivot)
+      val (less, greater) = t.partition(_ < pivot)  //divide two lists into greater than pivot and less than pivor
       quickSork(less) ::: (pivot :: quickSork(greater))
   }
 

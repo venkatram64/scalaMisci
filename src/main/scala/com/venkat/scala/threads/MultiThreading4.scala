@@ -18,7 +18,7 @@ object MultiThreading4{
     val threads = for(i <- cnts.indices) yield {
       new Thread(new Runnable {
         override def run(): Unit = {
-          var c = 0
+          var c = 0 //local variable
           for(j <- 1 to 100000000) {
             c += 1//race condition or critical block
           }
@@ -26,8 +26,8 @@ object MultiThreading4{
         }
       })
     }
-    threads.foreach(_.start())
-    threads.foreach(_.join())
+    threads.foreach(_.start()) //all threads are started
+    threads.foreach(_.join()) //all threads are joined
     println((System.nanoTime() - start)/1e9)
     println(cnts.sum)
   }

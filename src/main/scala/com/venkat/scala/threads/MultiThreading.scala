@@ -7,6 +7,7 @@ package com.venkat.scala.threads
   parallel processing
   concurrency
  */
+//https://www.youtube.com/watch?v=qFc79JZTcUc&list=PLLMXbkbDbVt98z_6KWt3fU3W5jTOja9zY
 object MultiThreading extends App{
 
   new Thread(new Runnable {

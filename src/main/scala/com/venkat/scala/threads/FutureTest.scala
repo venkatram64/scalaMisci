@@ -1,9 +1,10 @@
 package com.venkat.scala.threads
 
 import io.StdIn._
-import scala.concurrent.Future
+import scala.concurrent.{Await, Future}
 import scala.concurrent.ExecutionContext.Implicits._
 import scala.util.{Failure, Success}
+import scala.concurrent.duration._
 
 //https://www.youtube.com/watch?v=auQrWAKa3GA&index=4&list=PLLMXbkbDbVt98z_6KWt3fU3W5jTOja9zY
 
@@ -26,6 +27,8 @@ object FutureTest extends App{
     case Failure(ex) => println("Something went wrong. ", ex)
   }
 
-  readLine()
+  println(Await.result(f2, 5 seconds))  //this blocks the main thread
+
+  //readLine() //this blocks the main thread this line is comments b/c of above await
 
 }
